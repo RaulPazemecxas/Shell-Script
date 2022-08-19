@@ -43,7 +43,7 @@ cat << EOF
 
 LINKEDIN: ## https://www.linkedin.com/in/raul-pazem%C3%A9cxas-04882b21a/ ##
 
-GITHUB: 
+GITHUB: RaulPazemecxas
 
 EOF
 
