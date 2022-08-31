@@ -11,7 +11,7 @@ sleep 2
 	function contagem_de_objetos(){
 		G=$(wc -l /etc/group | cut -d" " -f1)
 		U=$(wc -l /etc/passwd | cut -d " " -f1)
-		echo "O sistema possui $G gryoos!"
+		echo "O sistema possui $G grupos!"
 		echo "O sistema possui $U usuarios!"
 		echo "Quantidade de objetos no sistema:" $(($G+$U))
 }
