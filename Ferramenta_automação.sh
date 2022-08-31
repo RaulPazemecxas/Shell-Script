@@ -2,18 +2,11 @@
 
 echo "Seja bem-vindo ao script de automações! Selecione a opção desejada: "
 
-x="teste"
-
-menu ()
-{
-while true $x != "teste"
-do
 clear
 echo "================================================"
 
-cat << EOF
+cat << "EOF"
 
-    
                 88888888.88888.
               .8888888888888888.
               888888888888888888
@@ -43,7 +36,7 @@ cat << EOF
 
 LINKEDIN: ## https://www.linkedin.com/in/raul-pazem%C3%A9cxas-04882b21a/ ##
 
-GITHUB: RaulPazemecxas
+GITHUB: /RaulPazemecxas
 
 EOF
 
@@ -92,7 +85,13 @@ echo ""
 
 echo ""
 echo "================================================"
-echo "7) Sair do programa"
+echo "8) Sair do programa"
+echo "================================================"
+echo ""
+
+echo ""
+echo "================================================"
+echo "7) Verificar número de shell's válidas"
 echo "================================================"
 echo ""
 
@@ -114,62 +113,66 @@ case "$x" in
        usermod -aG sudo $user_sudoers 
        sleep 5
 
-echo "O usuário $user_sudoers foi adicionado ao grupo de sudo"
+	echo "O usuário $user_sudoers foi adicionado ao grupo de sudo"
 
-echo "================================================"
+	echo "================================================"
 ;;
     2)
-      echo "Informe o nome do pacote para ser removido: "
-      read nome
-      apt-get remove --purge $nome
-      sleep 5
-      echo ""
-      echo "Pacote ($nome) removido!"
+      	echo "Informe o nome do pacote para ser removido: "
+      	read nome
+      	apt-get remove --purge $nome
+      	sleep 5
+	echo ""
+	echo "Pacote ($nome) removido!"
 
-echo "================================================"
+	echo "================================================"
 ;;
-   3)
+    3)
       echo "Iniciando atualização total do kernel Linux..."
       sudo apt-get update && sudo apt-get dist-full-upgrade
       sleep 5
       uname 
 
-echo "================================================"
+	echo "================================================"
 ;;
     4)
        echo "Iniciando o processo..."
        apt-get -f install
        sleep 5
 
-echo "================================================"
+	echo "================================================"
 ;;
      5)
        echo "Corrigindo erros..."
        apt-get autoremove
        sleep 5
 
-echo "================================================"
+	echo "================================================"
 ;;
-    6)
-    echo "Reparando..."
-    dpkg --configure -a
-    sleep 5
+   	 6)
+    	echo "Reparando..."
+    	dpkg --configure -a
+    	sleep 5
 
-echo "================================================"
+	echo"================================================"
  ;;
-       7)
+       8)
          echo "Encerrando..."
          sleep 5
-         clear;
-         exit;
+         clear
+	 break
 
+	echo"================================================"
+;;
+       7)
+	 echo "Verificando o número de shell's e seus usuários no arquivo de configuração /etc/passwd."
+         sleep 2
+	 cat /etc/passwd | cut -d ":" -f1,7 | egrep '/bin/[b,z,k,a]*sh'
+	
 echo "================================================"
 ;;
 
 *)
         echo "Opção inválida!"
 esac
-done
 
-}
-menu
